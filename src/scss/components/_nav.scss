@@ -1,6 +1,9 @@
 .nav {
     display: flex;
     align-items: center;
+    @include phone {
+        display: none;
+    }
     &__link {
         color: #fff;
         font-size: 14px;

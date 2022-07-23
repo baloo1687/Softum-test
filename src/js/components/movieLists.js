@@ -3,21 +3,27 @@ import 'slick-carousel';
 import { updatePopupInfo } from './popup';
 
 export const createMoviesList = (data) => {
-    console.log(data);
-    const movieListElement = document.querySelector('.js-movies-list');
+    const movieListElements = document.querySelectorAll('.js-movies-list');
 
-    document.querySelector('.js-movies-list').classList.contains('slick-initialized') ? $('.js-movies-list').slick('unslick') : null
-    movieListElement.innerHTML = ''; // clear all html before appending new markup
+    movieListElements.forEach(element => {
+        element.classList.contains('slick-initialized') ? $('.js-movies-list').slick('unslick') : null
+        element.innerHTML = ''; // clear all html before appending new markup
+    })
+    
 
-    const moviesNodes = data.map(movie => {
+    const moviesNodes = data.map((movie, index) => {
         const movieElement = document.createElement('div');
+        const moviePoster = movie.backdrop_path ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}` : noImage
+
         movieElement.className = 'movies__item js-movie-item';
         movieElement.id = movie.id;
         movieElement.innerHTML = `
-                            <img src="${noImage}" class="movies__poster" alt="Movie"/>
-                            <div class="movies__name">${movie.title}</div>
+                            <img src="${moviePoster}" class="movies__poster" alt="Movie"/>
+                            <div class="movies__name">${index + 1}. ${movie.title}</div>
                             `;
-        movieListElement.appendChild(movieElement);
+        
+        movieListElements.forEach(element => element.appendChild(movieElement))
+
         return movieElement;
     })
 
@@ -35,8 +41,28 @@ const createCarousel = () => {
         infinite: false,
         slidesToShow: 5,
         slidesToScroll: 1, 
+        rows: 2,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            }, {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            }
+        ]
     }
 
-    $('.js-movies-list').slick(slickSettings);
+    $('.js-movies-slider').slick(slickSettings);
 }
 

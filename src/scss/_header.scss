@@ -4,6 +4,11 @@
     align-items: center;
     padding: 15px;
     margin-bottom: 50px;
+    &__register {
+        @include sm-tablet {
+            display: none;
+        }
+    }
     &__login {
         margin-right: 20px;
     }

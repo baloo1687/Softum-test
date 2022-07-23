@@ -1,8 +1,11 @@
+import noImage from '../../img/no-image.png';
+
 export const updatePopupInfo = (id, moviesData) => {
     const movieInfo = moviesData.find(movie => movie.id == id);
+    const moviePoster = movieInfo.backdrop_path ? `https://image.tmdb.org/t/p/original/${movieInfo.backdrop_path}` : noImage;
 
     const popupContentNode = document.querySelector('.js-popup-content');
-    popupContentNode.innerHTML = `<img src="${movieInfo.poster_path}" class="popup__img" alt="${movieInfo.title}">
+    popupContentNode.innerHTML = `<img src="${moviePoster}" class="popup__img" alt="${movieInfo.title}">
                                     <div class="popup__name">${movieInfo.title}</div>
                                     <div class="popup__subinfo">
                                         <div class="popup__date">Release: ${movieInfo.release_date}</div>
