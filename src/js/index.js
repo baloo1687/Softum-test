@@ -9,21 +9,23 @@ const sortButtons = sortNode.querySelectorAll('.js-sort-button');
 const sortPlaceholder = document.querySelector('.js-sort-placeholder');
 
 document.addEventListener("DOMContentLoaded", async function() {
-    createMoviesList(await getData());
+    const data = await getData();
+    createMoviesList(data);
+
+    popupOverlay.addEventListener('click', (e) => {
+        hidePopup();
+    })
+    
+    sortButtons.forEach(sortButton => {
+        sortButton.addEventListener('click', async e => {
+            const sortBy = e.currentTarget.getAttribute('data-sortby');
+            sort(sortBy, data);
+        })
+    })
+    
+    sortPlaceholder.addEventListener('click', e => {
+        const sortContainer = e.target.closest('.sort');
+        sortContainer.classList.toggle('open');
+    })
 });
 
-popupOverlay.addEventListener('click', (e) => {
-    hidePopup();
-})
-
-sortButtons.forEach(sortButton => {
-    sortButton.addEventListener('click', async e => {
-        const sortBy = e.currentTarget.getAttribute('data-sortby');
-        sort(sortBy, await getData());
-    })
-})
-
-sortPlaceholder.addEventListener('click', e => {
-    const sortContainer = e.target.closest('.sort');
-    sortContainer.classList.toggle('open');
-})
