@@ -392,23 +392,65 @@ const moviesData = [
 export const createMoviesList = () => {
     const movieListElement = document.querySelector('.js-movies-list');
 
-    moviesData.forEach(movie => {
+    let moviesNodes = moviesData.map(movie => {
         const movieElement = document.createElement('div');
         movieElement.className = 'movies__item js-movie-item';
+        movieElement.id = movie.id;
         movieElement.innerHTML = `
                             <img src="${noImage}" class="movies__poster" alt="Movie"/>
                             <div class="movies__name">${movie.title}</div>
                             `
         movieListElement.appendChild(movieElement);
+        return movieElement;
     })
 
     createCarousel();
+    handleClick(moviesNodes);
 }
 
-export const createCarousel = () => {
+const createCarousel = () => {
     $('.js-movies-list').slick({
         infinite: false,
         slidesToShow: 5,
         slidesToScroll: 1, 
     });
+}
+
+const handleClick = (nodes) => {
+    nodes.forEach(element => {
+        element.addEventListener('click', e => {
+            updatePopupInfo(e.currentTarget.id);
+        })
+    });
+
+    const popupOverlay = document.querySelector('.js-popup-overlay');
+    popupOverlay.addEventListener('click', (e) => {
+        closePopup();
+    })
+}
+
+const updatePopupInfo = (id) => {
+    const movieInfo = moviesData.find(movie => movie.id == id);
+
+    const popupContentNode = document.querySelector('.js-popup-content');
+    popupContentNode.innerHTML = `<img src="${movieInfo.poster_path}" class="popup__img" alt="${movieInfo.title}">
+                                    <div class="popup__name">${movieInfo.title}</div>
+                                    <div class="popup__subinfo">
+                                        <div class="popup__date">Release: ${movieInfo.release_date}</div>
+                                        <div class="popup__rating">IMDb: ${movieInfo.vote_average}</div>
+                                        <div class="popup__language">Original language: <span class="popup__language--uppercase">${movieInfo.original_language}</span></div>
+                                    </div>
+                                    <div class="popup__description">${movieInfo.overview}</div>`
+    
+    showPopup();
+}
+
+const showPopup = () => {
+    const popup = document.querySelector('.js-popup');
+    popup.classList.toggle('show');
+}
+
+const closePopup = () => {
+    const popup = document.querySelector('.js-popup');
+    popup.classList.toggle('show');
 }

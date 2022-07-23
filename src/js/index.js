@@ -1,4 +1,4 @@
-import { createMoviesList, createCarousel } from "./components";
+import { createMoviesList } from "./components";
 
 createMoviesList();
 // createCarousel();
