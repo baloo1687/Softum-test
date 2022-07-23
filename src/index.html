@@ -40,12 +40,16 @@
         </section>
         <section class="main__section movies js-section">
             <h3 class="movies__title">Movies</h3>
+            <div class="movies__sort sort js-sort">
+                <ul class="sort__list">
+                    <li class="sort__item js-sort-button" data-sortBy="a-z">A->Z</li>
+                    <li class="sort__item js-sort-button" data-sortBy="z-a">Z->A</li>
+                </ul>
+            </div>
             <div class="movies__list js-movies-list"></div>
             <div class="movies__popup popup hide js-popup">
                 <div class="popup__overlay js-popup-overlay"></div>
-                <div class="popup__content js-popup-content">
-                    
-                </div>
+                <div class="popup__content js-popup-content"></div>
             </div>
         </section>  
     </main>

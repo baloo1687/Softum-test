@@ -1,4 +1,5 @@
-import { createMoviesList } from "./components";
+import { createMoviesList, handlePopupClick, handleSortClick} from "./components";
 
 createMoviesList();
-// createCarousel();
+handlePopupClick();
+handleSortClick();

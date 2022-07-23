@@ -389,43 +389,51 @@ const moviesData = [
     }
 ]
 
-export const createMoviesList = () => {
+export const createMoviesList = (sortedData) => {
     const movieListElement = document.querySelector('.js-movies-list');
+    const data = sortedData ? sortedData : moviesData;
 
-    let moviesNodes = moviesData.map(movie => {
+    document.querySelector('.js-movies-list').classList.contains('slick-initialized') ? $('.js-movies-list').slick('unslick') : null
+    movieListElement.innerHTML = ''; // clear all html before appending new markup
+
+    let moviesNodes = data.map(movie => {
         const movieElement = document.createElement('div');
         movieElement.className = 'movies__item js-movie-item';
         movieElement.id = movie.id;
         movieElement.innerHTML = `
                             <img src="${noImage}" class="movies__poster" alt="Movie"/>
                             <div class="movies__name">${movie.title}</div>
-                            `
+                            `;
         movieListElement.appendChild(movieElement);
         return movieElement;
     })
 
     createCarousel();
-    handleClick(moviesNodes);
+    handleMovieClick(moviesNodes);
 }
 
 const createCarousel = () => {
-    $('.js-movies-list').slick({
+    const slickSettings = {
         infinite: false,
         slidesToShow: 5,
         slidesToScroll: 1, 
-    });
+    }
+
+    $('.js-movies-list').slick(slickSettings);
 }
 
-const handleClick = (nodes) => {
+const handleMovieClick = (nodes) => {
     nodes.forEach(element => {
         element.addEventListener('click', e => {
             updatePopupInfo(e.currentTarget.id);
         })
     });
+}
 
+export const handlePopupClick = () => {
     const popupOverlay = document.querySelector('.js-popup-overlay');
     popupOverlay.addEventListener('click', (e) => {
-        closePopup();
+        hidePopup();
     })
 }
 
@@ -450,7 +458,35 @@ const showPopup = () => {
     popup.classList.toggle('show');
 }
 
-const closePopup = () => {
+const hidePopup = () => {
     const popup = document.querySelector('.js-popup');
     popup.classList.toggle('show');
+}
+
+export const handleSortClick = () => {
+    const sortNode = document.querySelector('.js-sort')
+    const sortButtons = sortNode.querySelectorAll('.js-sort-button');
+    sortButtons.forEach(sortButton => {
+        sortButton.addEventListener('click', e => {
+            const sortBy = e.currentTarget.getAttribute('data-sortby');
+            sort(sortBy);
+        })
+    })
+}
+
+export const sort = (sortBy) => {
+    const sortedData = Object.assign([], moviesData);
+
+    sortedData.sort((a, b) => {
+        var nameA = a.title.toUpperCase();
+        var nameB = b.title.toUpperCase();
+
+        if (sortBy === 'a-z') {
+            return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
+        } else {
+            return nameA < nameB ? 1 : nameA > nameB ? -1 : 0
+        }
+    });
+
+    createMoviesList(sortedData);
 }
