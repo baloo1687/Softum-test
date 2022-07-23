@@ -82,6 +82,10 @@
             height: 150px;
             margin-bottom: 70px;
             cursor: pointer;
+            transition: .3s;
+            &:hover {
+                transform: scale(1.1);
+            }
             &:nth-child(5n) {
                 margin-right: 0;
             }
