@@ -3,6 +3,7 @@ import 'slick-carousel';
 import { updatePopupInfo } from './popup';
 
 export const createMoviesList = (data) => {
+    console.log(data);
     const movieListElement = document.querySelector('.js-movies-list');
 
     document.querySelector('.js-movies-list').classList.contains('slick-initialized') ? $('.js-movies-list').slick('unslick') : null
