@@ -1,15 +1,22 @@
+@import '../css/reset';
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8fafd;
+	font-family: 'Montserrat', sans-serif;
+	background: #0f1015;
+	max-width: 1440px;
+	margin: 0 auto;
     overflow-x: hidden;
 }
 
-@import '../css/reset';
 @import 'mixins';
+@import './components/logo';
+@import './components/nav';
+@import './components/button';
+@import './components/social';
 @import 'header';
 @import 'main';
 @import 'footer';
