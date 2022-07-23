@@ -23,5 +23,8 @@
     "build": "set NODE_ENV=development&&webpack serve --open",
     "dev": "set NODE_ENV=development&&webpack",
     "prod": "set NODE_ENV=production&&webpack"
+  },
+  "dependencies": {
+    "slick-carousel": "^1.8.1"
   }
 }

@@ -4,6 +4,7 @@
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: nowrap;
+        margin-bottom: 100px;
         &__text {
             width: calc(50% - 20px);
             display: flex;
@@ -30,5 +31,54 @@
             }
         }
     }
-}
 
+    .movies {
+        margin-bottom: 100px;
+        &__title {
+            font-size: 28px;
+            color: #fff;
+            font-weight: 600;
+            padding-bottom: 10px;
+            margin-bottom:  30px;
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 200px;
+                height: 1px;
+                background-color: #ff186c;
+            }
+        }
+        &__list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        &__item {
+            padding: 0 10px;
+            height: 200px;
+            &:nth-child(5n) {
+                margin-right: 0;
+            }
+        }
+        &__poster {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        &__name {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+
+    .slick-slider {
+        .slick-next, .slick-prev {
+            transform: none;
+        }
+    }
+}
