@@ -25,6 +25,7 @@
     "prod": "set NODE_ENV=production&&webpack"
   },
   "dependencies": {
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "tiny-slider": "^2.9.4"
   }
 }

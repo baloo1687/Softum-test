@@ -1,7 +1,6 @@
 import noImage from '../../img/no-image.png';
 
-export const updatePopupInfo = (id, moviesData) => {
-    const movieInfo = moviesData.find(movie => movie.id == id);
+export const updatePopupInfo = (movieInfo) => {
     const moviePoster = movieInfo.backdrop_path ? `https://image.tmdb.org/t/p/original/${movieInfo.backdrop_path}` : noImage;
 
     const popupContentNode = document.querySelector('.js-popup-content');
@@ -19,10 +18,10 @@ export const updatePopupInfo = (id, moviesData) => {
 
 export const showPopup = () => {
     const popup = document.querySelector('.js-popup');
-    popup.classList.toggle('show');
+    popup.classList.add('show');
 }
 
 export const hidePopup = () => {
     const popup = document.querySelector('.js-popup');
-    popup.classList.toggle('show');
+    popup.classList.remove('show');
 }

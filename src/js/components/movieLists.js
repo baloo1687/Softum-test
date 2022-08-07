@@ -3,13 +3,10 @@ import 'slick-carousel';
 import { updatePopupInfo } from './popup';
 
 export const createMoviesList = (data) => {
-    const movieListElements = document.querySelectorAll('.js-movies-list');
+    const movieList = document.querySelector('.js-movies-list');
 
-    movieListElements.forEach(element => {
-        element.classList.contains('slick-initialized') ? $('.js-movies-list').slick('unslick') : null
-        element.innerHTML = ''; // clear all html before appending new markup
-    })
-    
+    movieList.classList.contains('slick-initialized') ? $('.js-movies-list').slick('unslick') : null
+    movieList.innerHTML = ''; // clear all html before appending new markup
 
     const moviesNodes = data.map((movie, index) => {
         const movieElement = document.createElement('div');
@@ -22,7 +19,7 @@ export const createMoviesList = (data) => {
                             <div class="movies__name">${index + 1}. ${movie.title}</div>
                             `;
         
-        movieListElements.forEach(element => element.appendChild(movieElement))
+        movieList.appendChild(movieElement);
 
         return movieElement;
     })
@@ -31,7 +28,8 @@ export const createMoviesList = (data) => {
 
     moviesNodes.forEach(movieNode => {
         movieNode.addEventListener('click', e => {
-            updatePopupInfo(e.currentTarget.id, data);
+            const movieInfo = data.find(movie => movie.id == e.currentTarget.id);
+            updatePopupInfo(movieInfo);
         })
     });
 }

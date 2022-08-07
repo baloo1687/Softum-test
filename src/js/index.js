@@ -4,28 +4,25 @@ import { hidePopup } from "./components/popup";
 import { sort } from "./components/sort";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    const popupOverlay = document.querySelector('.js-popup-overlay');
-    const sortNode = document.querySelector('.js-sort')
-    const sortButtons = sortNode.querySelectorAll('.js-sort-button');
-    const sortPlaceholder = document.querySelector('.js-sort-placeholder');
+    const moviesSection = document.querySelector('.js-section');
     const data = await getData();
 
     createMoviesList(data);
 
-    popupOverlay.addEventListener('click', e => {
-        hidePopup();
-    })
-    
-    sortButtons.forEach(sortButton => {
-        sortButton.addEventListener('click', e => {
-            const sortBy = e.currentTarget.getAttribute('data-sortby');
+    moviesSection.addEventListener('click', (e) => {
+        if (e.target.classList.contains('js-popup-overlay')) {
+            hidePopup();
+        }
+
+        if (e.target.classList.contains('js-sort-button')) {
+            const sortBy = e.target.getAttribute('data-sortby');
             sort(sortBy, data);
-        })
-    })
-    
-    sortPlaceholder.addEventListener('click', e => {
-        const sortContainer = e.target.closest('.sort');
-        sortContainer.classList.toggle('open');
+        }
+
+        if (e.target.classList.contains('js-sort-placeholder')) {
+            const sortContainer = e.target.closest('.sort');
+            sortContainer.classList.toggle('open');
+        }
     })
 });
 
