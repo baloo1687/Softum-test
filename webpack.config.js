@@ -34,9 +34,6 @@ module.exports = {
                             plugins: [
                               [
                                 "postcss-preset-env",
-                                {
-                                  // Options
-                                },
                               ],
                             ],
                           },
@@ -71,11 +68,11 @@ module.exports = {
         ],
     },
     plugins: [
-      new webpack.ProvidePlugin({
-        $: 'jquery',
-        jQuery: 'jquery',
-        'window.$': 'jquery',
-      }),
+      // new webpack.ProvidePlugin({
+      //   $: 'jquery',
+      //   jQuery: 'jquery',
+      //   'window.$': 'jquery',
+      // }),
       new HtmlWebpackPlugin({
         template: "./src/index.html"
       }),

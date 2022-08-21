@@ -1,6 +1,6 @@
-# Test task for Cpamatica company
+# Test task for Softum company
 
-To see the finished project follow the link: https://baloo1687.github.io/Cpamatica-test/dist/index.html
+To see the finished project follow the link: https://baloo1687.github.io/Softum-test/dist/index.html
 
 # npm run build
 

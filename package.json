@@ -7,7 +7,6 @@
     "css-loader": "^6.7.1",
     "html-loader": "^3.1.0",
     "html-webpack-plugin": "^5.5.0",
-    "jquery": "^3.6.0",
     "mini-css-extract-plugin": "^2.6.0",
     "postcss": "^8.4.12",
     "postcss-loader": "^6.2.1",
@@ -23,8 +22,5 @@
     "build": "set NODE_ENV=development&&webpack serve --open",
     "dev": "set NODE_ENV=development&&webpack",
     "prod": "set NODE_ENV=production&&webpack"
-  },
-  "dependencies": {
-    "slick-carousel": "^1.8.1"
   }
 }
