@@ -1,0 +1,64 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    @include phone {
+        justify-content: center;
+    }    
+    &__item {
+        min-width: 277px;
+        min-height: 277px;
+        max-width: calc((100% - 60px) / 4);
+        margin-right: 20px;
+        margin-bottom: 20px;
+        border: 1px solid $white-color;
+        border-radius: 10px;
+        padding: 15px;
+        position: relative;
+        @include desktop {
+            &:nth-child(4n), &:last-child {
+                margin-right: 0;
+            }
+        }
+        @include lg-tablet {
+            max-width: calc(100% / 3);
+            width: calc((100%/3) - (20px * 2 /3));
+            margin-left: 0;
+            margin-right: 20px;
+            &:nth-child(3n) {
+                margin-right: 0;
+            }
+        }
+        @include sm-tablet {
+            max-width: 50%;
+            width: calc((100% - 20px) / 2);
+            margin-right: 0;
+            margin-left: 20px;
+            &:nth-child(odd) {
+                margin-left: 0;
+            }
+        }
+        @include phone {
+            max-width: 100%;
+            width: 100%;
+            height: auto;
+            margin-left: 0;
+        }
+        &-title {
+            font-size: 18px;
+            padding-bottom: 15px;
+            font-weight: bold;
+        }
+        &-text {
+            font-size: 16px;
+            padding-bottom: 25px;
+        }
+        .button {
+            width: 100%;
+            font-size: 20px;
+            margin-bottom: 15px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

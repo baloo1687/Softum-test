@@ -1,4 +1,6 @@
 @import '../css/reset';
+@import 'variables';
+@import 'mixins';
 
 * {
     box-sizing: border-box;
@@ -6,10 +8,19 @@
 
 body {
 	font-family: 'Montserrat', sans-serif;
-	background: #0f1015;
-	max-width: 1440px;
+	background: $background-color;
+	max-width: 1200px;
 	margin: 0 auto;
     overflow-x: hidden;
+	color: $white-color;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
-@import 'mixins';
+@import 'header';
+@import 'main';
+@import './components/cards';
+@import './components/buttons';
+@import './components/preloader';
+@import './components/modal';
