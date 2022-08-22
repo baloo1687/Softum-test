@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <title>Softum test</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<script defer src="main.js"></script></head>
+<body>
+    <header class="header js-header">
+        <ul class="header__buttons js-control">
+            <li class="button button--default js-control-add ">Add</li>
+            <li class="button button--default disabled js-control-remove">Remove</li>
+            <li class="button button--default js-control-fill"><span class="js-control-fill">Fill</span></li>
+            <li class="button button--default disabled js-control-clear">Clear</li>
+        </ul>
+    </header>
+
+    <main class="main">
+        <div class="modal js-modal">
+            <div class="modal__overlay js-modal-overlay"></div>
+            <div class="modal__content js-modal-content"></div>
+        </div>
+        <div class="main__cards cards js-cards"></div>
+    </main>
+
+</body>
+</html>
