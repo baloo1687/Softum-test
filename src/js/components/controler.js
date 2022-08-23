@@ -19,6 +19,7 @@ export const controler = () => {
             removeCard();
         }
         if (e.target.classList.contains('js-control-clear')) {
+            window.removeEventListener('scroll', addCardWhileScroll);
             clearCardList();
         }
         if (e.target.classList.contains('js-control-fill')) {

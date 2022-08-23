@@ -2,7 +2,7 @@ import { generateString } from "./generateString";
 
 const cardsData = [];
 
-export const generateCardMarkup = (cb, storageData) => {
+export const generateCardMarkup = (cb) => {
     const cardsContainerNode = document.querySelector('.js-cards');
     let cardNode = document.createElement('div');
     cardNode.classList.add('cards__item');

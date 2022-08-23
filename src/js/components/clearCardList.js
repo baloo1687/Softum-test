@@ -1,5 +1,4 @@
-import { addCardWhileScroll } from "./fillCardList";
-import { getCardData, removeCardData } from "./generateCardMarkup";
+import { removeCardData } from "./generateCardMarkup";
 
 export const clearCardList = () => {
     const cardNodes = document.querySelectorAll('.js-card');
