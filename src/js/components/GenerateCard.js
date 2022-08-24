@@ -37,7 +37,6 @@ export default class GenerateCard {
                     'modal': modalText
                 }
 
-                // this.storage.isAllSyncDone = false;
                 this.storage.setData(newCardData);
 
                 resolve(true)

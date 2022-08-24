@@ -223,11 +223,10 @@ class GenerateCard {
           'title': cardTitle,
           'text': cardText,
           'modal': modalText
-        }; // this.storage.isAllSyncDone = false;
-
+        };
         this.storage.setData(newCardData);
         resolve(true);
-      }, 500);
+      }, 3000);
     });
   }
 
@@ -302,10 +301,7 @@ class Modal {
     this.modalNode.classList.remove('show');
   }
 
-} // export const modal = (buttonNode) => {
-//     const modalContentNode = document.querySelector('.js-modal-content');
-//     const cardData = getCardData(buttonNode);
-// }
+}
 
 /***/ }),
 
