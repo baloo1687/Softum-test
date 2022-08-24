@@ -1,3 +1,3 @@
-import { controler } from "./components/controler";
+import Controller from "./components/Controller";
 
-controler();
+new Controller();
