@@ -16,6 +16,7 @@ export default class FillCard {
 
     async init() {
         if (this.buttonNodes.fill.classList.contains('active')) return false
+        this.buttonNodes.fill.classList.add('active');
 
         if (!this.cardsData.length) {
             const card = new GenerateCard(this.storage);
@@ -37,20 +38,30 @@ export default class FillCard {
     async filler() {
         this.storage.isPromiseDone = false;
         this.buttonNodes.clear.classList.add('disabled');
-        this.buttonNodes.fill.classList.add('active');
         this.buttonNodes.add.classList.add('disabled');
 
         const cardsContainerNode = document.querySelector('.js-cards');
-        let viewPortBottomPos = window.innerHeight + document.documentElement.scrollTop;
-        let cardsContainerBottomPos = cardsContainerNode.getBoundingClientRect().bottom + document.documentElement.scrollTop;
 
-        if (viewPortBottomPos > cardsContainerBottomPos) {
-            await this.rowFiller();
-            this.filler();
-        } else {
+        if (this.storage.isMobile) {
+            const card = new GenerateCard(this.storage);
+            await card.createMarkup();
+
             this.storage.isPromiseDone = true;
             this.buttonNodes.clear.classList.remove('disabled');
+            this.buttonNodes.remove.classList.remove('disabled');
             this.buttonNodes.add.classList.remove('disabled');
+        } else {
+            let viewPortBottomPos = window.innerHeight + document.documentElement.scrollTop;
+            let cardsContainerBottomPos = cardsContainerNode.getBoundingClientRect().bottom + document.documentElement.scrollTop;
+    
+            if (viewPortBottomPos > cardsContainerBottomPos) {
+                await this.rowFiller();
+                this.filler();
+            } else {
+                this.storage.isPromiseDone = true;
+                this.buttonNodes.clear.classList.remove('disabled');
+                this.buttonNodes.add.classList.remove('disabled');
+            }
         }
     }
 

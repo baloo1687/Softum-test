@@ -2,8 +2,11 @@
     display: flex;
     flex-wrap: wrap;
     @include phone {
-        justify-content: center;
-    }    
+        justify-content: start;
+        flex-wrap: nowrap;
+        overflow-x: scroll;
+        overflow-y: hidden;
+    }
     &__item {
         min-width: 277px;
         min-height: 277px;
@@ -38,11 +41,15 @@
             }
         }
         @include phone {
-            max-width: 100%;
-            width: 100%;
-            height: auto;
-            margin-left: 0;
+            min-width: 70%;
+            margin-right: 20px!important;
+            margin-left: 0!important;
+            &:only-child {
+                min-width: 100%;
+                margin-right: 0px!important;
+            }
         }
+
         &-title {
             font-size: 18px;
             padding-bottom: 15px;

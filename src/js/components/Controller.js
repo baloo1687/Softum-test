@@ -16,8 +16,9 @@ export default class Controller {
         this.storage = new Storage();
         this.fillCard = new FillCard(this.storage);
         this.boundScrollHandler = this.fillCard.addingOnScroll.bind(this.fillCard);
-
         this.modal = new Modal(this.storage);
+
+        this.cardsContainerNode = document.querySelector('.js-cards');
 
         this.clickHandler();
     }
@@ -38,10 +39,18 @@ export default class Controller {
                     this.storage.isPromiseDone = false;
                     this.fillCard.init();
                 }
-                window.addEventListener('scroll', this.boundScrollHandler);
+                if (this.storage.isMobile) {
+                    this.cardsContainerNode.addEventListener('scroll', this.boundScrollHandler);
+                } else {
+                    window.addEventListener('scroll', this.boundScrollHandler);
+                }
             }
             if (e.target.classList.contains('js-control-clear')) {
-                window.removeEventListener('scroll', this.boundScrollHandler);
+                if (this.storage.isMobile) {
+                    this.cardsContainerNode.removeEventListener('scroll', this.boundScrollHandler);
+                } else {
+                    window.removeEventListener('scroll', this.boundScrollHandler);
+                }
                 if (this.storage.isPromiseDone) {
                     clearCard(this.storage);
                 }
