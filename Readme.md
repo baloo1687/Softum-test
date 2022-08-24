@@ -12,7 +12,7 @@ Buttons logic:
 
 Cards has min width and height, and can be changing depend inner content.
 
-# npm run build
+# npm start
 
 For dev build and starting local webserver
 
