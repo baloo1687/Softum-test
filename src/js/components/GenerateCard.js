@@ -41,7 +41,7 @@ export default class GenerateCard {
                 this.storage.setData(newCardData);
 
                 resolve(true)
-            }, 500);
+            }, 3000);
         })
     }
 }
