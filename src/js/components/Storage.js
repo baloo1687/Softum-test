@@ -2,6 +2,7 @@ export default class Storage {
     constructor() {
         this.cardsData = [];
         this.isPromiseDone = true;
+        this.isMobile = window.innerWidth <= 656;
     }
 
     getData() {
